@@ -14,7 +14,7 @@ Route::get('/', function () {
 //     return view('firstpost');
 // });
 
-Route::get("/post/{id?}/comment/{commentid?}",function(string $id=null,string $commentId=null){
+Route::get("/post/{id?}/comment/{commentid?}/id/{otherid?}/song/{songvalue?}",function(string $id=null,string $commentId=null, $otherid=null){
     if($id){
         return "<h1>POST $id</h1>
                 <h2>Comment Id $commentId</h2>";
@@ -22,7 +22,7 @@ Route::get("/post/{id?}/comment/{commentid?}",function(string $id=null,string $c
     else{
         echo "<h1>No ID Found</h1>";
     }
-})->whereNumber("id")->whereNumber("commentid");
+})->where("id",'[a-zA-Z]+')->whereAlphaNumeric("commentid")->whereAlpha('otherid')->whereIn('song',['romantic','sad','devotional']);
 
 //Route::view('post','/post');
 
