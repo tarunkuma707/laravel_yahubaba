@@ -177,5 +177,42 @@
         <a href="{{ route('about') }}">About</a>
         <a href="{{ route('post') }}">Post</a>
         <a href="{{ route('gallery') }}">Gallery</a>
+        <br><br>
+        {{ 5+3 }}
+        <br><br>
+        {{ "5+3" }}
+        <br><br>
+        {{ "Hello World" }}
+        <br><br>
+        {{ "<h1>Hello World</h1>" }}
+        <br><br>
+        {!! "<h1>Hello World</h1>" !!}
+        
+        {!! "<script>alert('Tarun Kumar')</script>" !!}
+        
+        {{-- {!! "<script>alert('Tarun Kumar')</script>" !!} --}}
+        <br><br>
+        @php
+            $user   =   "Test";
+            $names  =   ["A","B","C"]
+        @endphp
+        <ul>
+        @foreach ($names as $n)
+        @if ($loop->first)
+            <li style="color:red">{{$loop->count }} == {{$loop->iteration }} - {{$loop->index}} - {{ $n }}</li>
+        @elseif ($loop->last)
+        <li style="color:blue;">{{$loop->count }} == {{$loop->iteration }} - {{$loop->index}} - {{ $n }}</li>
+        @else
+        <li style="color:green;">{{$loop->count }} == {{$loop->iteration }} - {{$loop->index}} - {{ $n }}</li>
+        @endif
+        @if($loop->even)
+        <li style="color:red">Even{{$loop->count }} == {{$loop->iteration }} - {{$loop->index}} - {{ $n }}</li>
+        @elseif ($loop->odd)
+            <li style="color:blue;">ODD{{$loop->count }} == {{$loop->iteration }} - {{$loop->index}} - {{ $n }}</li>
+        
+        @endif
+        @endforeach
+    </ul>
+        @{{ $user }}
     </body>
 </html>
