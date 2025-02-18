@@ -6,10 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test',function(){
-    return view('about');
-});
-
 // Route::get('/post', function () {
 //     return view('post');
 // });
@@ -18,9 +14,20 @@ Route::get('/test',function(){
 //     return view('firstpost');
 // });
 
-Route::get("/page/post",function(){
-    return view('post');
-    });
+
+Route::prefix('page')->group(function(){
+    Route::get('/about',function(){
+        return view('about');
+    })->name('about');
+    
+    Route::get("/post",function(){
+        return view('post');
+    })->name('post');
+    
+    Route::get("/gallery",function(){
+        return view('gallery');
+    })->name('gallery');
+});
 
 //Route::view('post','/post');
 
@@ -28,4 +35,8 @@ Route::get("/page/post",function(){
 //     return view('post');
 // });
 
-Route::redirect('/about','/test', 301);
+//Route::redirect('/about','/test', 301);
+
+Route::fallback(function(){
+    return view('pagenotfound');
+});
