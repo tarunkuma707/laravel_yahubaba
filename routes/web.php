@@ -30,6 +30,21 @@ Route::get('/temp',function(){
 // });
 
 
+Route::get('/users',function(){
+    $names  =   array(
+        array("name"=>"Arun","phone"=>"98767","City"=>"Delhi"),
+        array("name"=>"Tarun","phone"=>"98767","City"=>"Nagpur"),
+        array("name"=>"RachnaHERE","phone"=>"98767","City"=>"Chandigarh"),
+        array("name"=>"Rachna","phone"=>"98767","City"=>"Chandigarh")
+    );
+    return view('users',[
+    'user'=>$names]);
+    // return view ('users')
+    // ->with("user","Yahoo")
+    // ->with("city","Delhi");
+    //return view('users')->withUser("test")->withCity("Chandigarh");
+});
+
 Route::prefix('page')->group(function(){
     Route::get("/post",function(){
         return view('post');
