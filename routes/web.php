@@ -2,9 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/post', function () {
+    return view('post');
+});
+
 
 // Route::get('/post', function () {
 //     return view('post');
@@ -35,8 +48,8 @@ Route::prefix('page')->group(function(){
 //     return view('post');
 // });
 
-//Route::redirect('/about','/test', 301);
-
+//Route::redirect('/about','/', 301);
+Route::redirect('/about','/about', 301);
 Route::fallback(function(){
     return view('pagenotfound');
 });
