@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document - @yield('pagetitle','Page')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @stack('styles')
 </head>
 <body>
     <div id="wrapper">
@@ -39,5 +40,7 @@
         </main>
         <footer>Test here &#169; {{ date('Y') }}</footer>
     </div>
+    @stack('scripts')
+    
 </body>
 </html>

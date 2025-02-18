@@ -6,5 +6,22 @@
 @endsection
 
 @section('pagetitle')
-    home page
+home page
 @endsection
+
+@push('scripts')
+    <script src='{{ asset('example.js') }}'></script>
+@endpush
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+@endpush
+
+@prepend('styles')
+    <style>
+        #wrapper{
+            background: tan;
+        }
+    </style>
+    
+@endprepend

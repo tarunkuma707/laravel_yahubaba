@@ -31,10 +31,6 @@ Route::get('/temp',function(){
 
 
 Route::prefix('page')->group(function(){
-    Route::get('/about',function(){
-        return view('about');
-    })->name('about');
-    
     Route::get("/post",function(){
         return view('post');
     })->name('post');
@@ -50,8 +46,7 @@ Route::prefix('page')->group(function(){
 //     return view('post');
 // });
 
-//Route::redirect('/about','/', 301);
-Route::redirect('/about','/about', 301);
+
 Route::fallback(function(){
     return view('pagenotfound');
 });
