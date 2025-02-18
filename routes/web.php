@@ -18,7 +18,9 @@ Route::get('/post', function () {
     return view('post');
 });
 
-
+Route::get('/temp',function(){
+    return view('pages.temp');
+});
 // Route::get('/post', function () {
 //     return view('post');
 // });
