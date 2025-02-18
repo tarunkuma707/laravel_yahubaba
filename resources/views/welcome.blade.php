@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -20,7 +21,10 @@
         @endif
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        
+        @php
+            $fruits = array("one"=>"Apple","two"=>"Banana","three"=>"Dates","four"=>"Orange", "five"=>"Mango");
+        @endphp
+        @include('pages.header',['names'=>$fruits])
         {{-- <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
             <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" />
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
@@ -214,5 +218,7 @@
         @endforeach
     </ul>
         @{{ $user }}
+        @includeIf('pages.contact')
+        @include('pages.footer')
     </body>
 </html>
