@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\TestingController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -9,6 +10,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::controller(PageController::class)->group(function(){
+    Route::get('/pageview','showHomeUser')->name('pagehome');
+    Route::get('/pageuserview/{id?}','showUser')->whereNumber('id')->name('pageuser');
+    Route::get('/blog','showBlog')->name('blog');
+});
+
+
+Route::get("/testing",TestingController::class);
 
 Route::get('/about', function () {
     return view('about');
@@ -55,6 +66,7 @@ Route::get('user/{id}',function ($id){
     $user    =   $users[$id];
     return view('user',['id'=>$user]);
 })->name('view.user');
+
 
 Route::prefix('page')->group(function(){
     Route::get("/post",function(){
