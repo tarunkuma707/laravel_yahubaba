@@ -29,14 +29,18 @@ Route::get('/temp',function(){
 //     return view('firstpost');
 // });
 
+function getUsers(){
+    return $names  =   [
+        1   =>["name"=>"Arun","phone"=>"98767","City"=>"Delhi"],
+        2   =>["name"=>"Tarun","phone"=>"98767","City"=>"Nagpur"],
+        3   =>["name"=>"RachnaHERE","phone"=>"98767","City"=>"Chandigarh"],
+        4   =>["name"=>"Rachna","phone"=>"98767","City"=>"Chandigarh"]
+    ];
+}
+
 
 Route::get('/users',function(){
-    $names  =   array(
-        array("name"=>"Arun","phone"=>"98767","City"=>"Delhi"),
-        array("name"=>"Tarun","phone"=>"98767","City"=>"Nagpur"),
-        array("name"=>"RachnaHERE","phone"=>"98767","City"=>"Chandigarh"),
-        array("name"=>"Rachna","phone"=>"98767","City"=>"Chandigarh")
-    );
+    $names  =   getUsers();
     return view('users',[
     'user'=>$names]);
     // return view ('users')
@@ -46,7 +50,10 @@ Route::get('/users',function(){
 });
 
 Route::get('user/{id}',function ($id){
-    return `<h1>User =$id</h1>`;
+    $users   =   getUsers();
+    abort_if(!isset($users[$id]),404);
+    $user    =   $users[$id];
+    return view('user',['id'=>$user]);
 })->name('view.user');
 
 Route::prefix('page')->group(function(){
