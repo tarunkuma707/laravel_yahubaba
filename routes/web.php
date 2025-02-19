@@ -45,6 +45,10 @@ Route::get('/users',function(){
     //return view('users')->withUser("test")->withCity("Chandigarh");
 });
 
+Route::get('user/{id}',function ($id){
+    return `<h1>User =$id</h1>`;
+})->name('view.user');
+
 Route::prefix('page')->group(function(){
     Route::get("/post",function(){
         return view('post');
