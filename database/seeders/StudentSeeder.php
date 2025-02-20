@@ -15,12 +15,13 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
         //
-        for($i=1;$i<=10;$i++){
-            student::create([
-                'name'=>fake()->name(),
-                'email'=>fake()->unique()->email()
-            ]);
-        }
+        student::factory()->count(5)->create();
+        // for($i=1;$i<=10;$i++){
+        //     student::create([
+        //         'name'=>fake()->name(),
+        //         'email'=>fake()->unique()->email()
+        //     ]);
+        // }
         // $json = File::get(path:'database/json/students.json');
         // $students    =   collect(json_decode($json));
         // $students->each(function($student){
