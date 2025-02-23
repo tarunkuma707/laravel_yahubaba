@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TestingController;
+use App\Http\Controllers\UserController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -17,6 +19,8 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/pageuserview/{id?}','showUser')->whereNumber('id')->name('pageuser');
     Route::get('/blog','showBlog')->name('blog');
 });
+
+Route::get('/showrawuser',[UserController::class,'showAllUsers']);
 
 
 Route::get("/testing",TestingController::class);
